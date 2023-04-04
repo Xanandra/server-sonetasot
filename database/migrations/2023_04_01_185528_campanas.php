@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('edades');
             $table->string('dosis');
             $table->string('marca');
-            $table->string('dateDosis');
+            $table->date('dateDosis');
             $table->string('modulo');
             $table->string('domicilio');
             $table->string('municipio');
-            $table->longblob('imagen');
 
             $table->timestamps();
         });
