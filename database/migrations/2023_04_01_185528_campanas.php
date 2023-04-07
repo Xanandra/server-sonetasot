@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('dosis');
             $table->string('marca');
             $table->date('dateDosis');
+            $table->date('dateAplic');
             $table->string('modulo');
             $table->string('domicilio');
             $table->string('municipio');

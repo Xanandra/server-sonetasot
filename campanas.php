@@ -36,12 +36,13 @@ if(isset($_GET["insertar"])){
     $dosis=$data->dosis;
     $marca=$data->marca;
     $dateDosis=$data->dateDosis;
+    $dateAplic=$data->dateAplic;
     $modulo=$data->modulo;
     $domicilio=$data->domicilio;
     $municipio=$data->municipio;
         if(($edades!="")&&($dosis!="")&&($modulo!="")&&($domicilio!="")&&($municipio!="")){
             
-    $sqlCampana = mysqli_query($conexionBD,"INSERT INTO campanas(edades,dosis,marca,dateDosis,modulo,domicilio,municipio) VALUES('$edades','$dosis','$marca','$dateDosis','$modulo','$domicilio','$municipio') ");
+    $sqlCampana = mysqli_query($conexionBD,"INSERT INTO campanas(edades,dosis,marca,dateDosis,dateAplic,modulo,domicilio,municipio) VALUES('$edades','$dosis','$marca','$dateDosis','$dateAplic','$modulo','$domicilio','$municipio') ");
     echo json_encode(["success"=>1]);
         }
     exit();
@@ -56,11 +57,14 @@ if(isset($_GET["actualizar"])){
     $dosis=$data->dosis;
     $marca=$data->marca;
     $dateDosis=$data->dateDosis;
+    $dateAplic=$data->dateAplic;
     $modulo=$data->modulo;
     $domicilio=$data->domicilio;
     $municipio=$data->municipio;
     
-    $sqlCampana = mysqli_query($conexionBD,"UPDATE campanas SET edades='$edades',dosis='$dosis',marca='$marca',dateDosis='$dateDosis',modulo='$modulo',domicilio='$domicilio',municipio='$municipio' WHERE id='$id'");
+    $sqlCampana = mysqli_query($conexionBD,"UPDATE campanas SET edades='$edades',dosis='$dosis',
+    marca='$marca',dateDosis='$dateDosis',dateAplic='$dateAplic',modulo='$modulo',domicilio='$domicilio',
+    municipio='$municipio' WHERE id='$id'");
     echo json_encode(["success"=>1]);
     exit();
 }
