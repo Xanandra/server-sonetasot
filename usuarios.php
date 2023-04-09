@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
-header("Access-Control-Allow-Methods: GET,POST");
+header("Access-Control-Allow-Methods: GET,POST,DELETE,PUT");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
@@ -22,16 +22,14 @@ if (isset($_GET["consultar"])){
     else{  echo json_encode(["success"=>0]); }
 }
 //borrar pero se le debe de enviar una clave ( para borrado )
-if (isset($_GET["borrar"])){
-    $sqlUsuario = mysqli_query($conexionBD,"DELETE FROM usuarios WHERE id=".$_GET["borrar"]);
-    if($sqlUsuario){
-        echo json_encode(["success"=>1]);
-        exit();
-    }
-    else{  echo json_encode(["success"=>0]); }
+if ($_SERVER['REQUEST_METHOD']  == 'DELETE'){
+    $sqlUsuario = "DELETE FROM usuarios WHERE id=".$_GET["id"];
+    $sqlResult = mysqli_query($conexionBD,$sqlUsuario);
+    echo json_encode(["success"=>$sqlResult]); 
+    exit();
 }
-//Insertar
 
+//Insertar
 if($_SERVER['REQUEST_METHOD']  == 'POST'){
     // echo (" datos 2");
     $data = json_decode(file_get_contents("php://input"));
@@ -68,12 +66,13 @@ if($_SERVER['REQUEST_METHOD']  == 'POST'){
     echo json_encode(["success"=>$sqlResult]); 
     exit();
 }
-// Actualizar
-if(isset($_GET["actualizar"])){
-    
+// Actualizar los datos
+if($_SERVER['REQUEST_METHOD']  == 'PUT'){
+    // echo (" datos 2");
     $data = json_decode(file_get_contents("php://input"));
 
-    $id=(isset($data->id))?$data->id:$_GET["actualizar"];
+    // print_r($data);
+
     $curp=$data->curp;
     $nombre=$data->nombre;
     $priApe=$data->priApe;
@@ -96,11 +95,12 @@ if(isset($_GET["actualizar"])){
     $fecCit=$data->fecCit;
     $pNombre=$data->pNombre;
     $pPriApe=$data->pPriApe;
-    $pSegAPe=$data->pSegAPe;
+    $pSegApe=$data->pSegApe;
     $camp_id=$data->camp_id;
-    
-    $sqlUsuario = mysqli_query($conexionBD,"UPDATE usuarios SET curp='$curp',nombre='$nombre',priApe='$priApe',segApe='$segApe',fecNac='$fecNac',edad='$edad',entNac='$entNac',sexo='$sexo',telCon1='$telCon1',telCon2='$telCon2',email='$email',calle='$calle',numExt='$numExt',numInt='$numInt',ebtFed='$ebtFed',codPos='$codPos',munic='$munic',colonia='$colonia',folio='$folio',fecCit='$fecCit',pNombre='$pNombre',pPriApe='$pPriApe',pSegApe='$pSegApe',camp_id='$camp_id' WHERE id='$id'");
-    echo json_encode(["success"=>1]);
+            
+    $update = "UPDATE usuarios SET curp='$curp',nombre='$nombre',priApe='$priApe',segApe='$segApe',fecNac='$fecNac',edad=$edad,entNac='$entNac',sexo='$sexo',telCon1=$telCon1,telCon2=$telCon2,email='$email',calle='$calle',numExt=$numExt,numInt='$numInt',entFed='$entFed',codPos=$codPos,munic='$munic',colonia='$colonia',folio='$folio',fecCit='$fecCit',pNombre='$pNombre',pPriApe='$pPriApe',pSegApe='$pSegApe',camp_id=$camp_id WHERE id=".$_GET["id"];
+    $sqlResult = mysqli_query($conexionBD,$update);
+    echo json_encode(["success"=>$sqlResult]); 
     exit();
 }
 // Consultar todo
