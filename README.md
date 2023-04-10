@@ -7,7 +7,16 @@ Es necesario ejecutar el comando `composer install` en la carpeta del proyecto p
 
 Se abre el Panel de Control de XAMPP y se inicia Apache y MySQL.
 
-###Base de datos
+## Base de datos
+
 Se crea la base de datos ***vacunacion***, una vez creada se abre una terminal en la carpeta del proyecto y se ejecuta el comando `php artisan migrate`, esto migrará las tablas a la base de datos.
 
 Una vez creada la base de datos es recomendable crear registros para la tabla de campañas para que se pueda utilizar las funcionalidades en el frontend, en este caso se tiene un archivo `campanas.sql` para poder importar dos registros de campañas.
+
+## Métodos
+
+### POST
+
+Con este método se añaden nuevos registros a la base de datos, en este caso toma el registro que se tenga en formato JSON y añade todos los campos necesarios, desde el forntend se encuentran las validaciones necesarias para que se envien los datos correctamente.
+
+Este método solo esta implementado para la tabla usuarios,
