@@ -24,8 +24,8 @@ return new class extends Migration
             $table->integer('edad');
             $table->string('entNac');
             $table->string('sexo');
-            $table->integer('telCon1');
-            $table->integer('telCon2');
+            $table->bigInteger('telCon1');
+            $table->bigInteger('telCon2');
             $table->string('email');
             $table->string('calle');
             $table->integer('numExt');
