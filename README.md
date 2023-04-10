@@ -13,10 +13,40 @@ Se crea la base de datos ***vacunacion***, una vez creada se abre una terminal e
 
 Una vez creada la base de datos es recomendable crear registros para la tabla de campañas para que se pueda utilizar las funcionalidades en el frontend, en este caso se tiene un archivo `campanas.sql` para poder importar dos registros de campañas.
 
+![campañas](images/campañas-01.png "campañas")
+
 ## Métodos
 
 ### POST
 
 Con este método se añaden nuevos registros a la base de datos, en este caso toma el registro que se tenga en formato JSON y añade todos los campos necesarios, desde el forntend se encuentran las validaciones necesarias para que se envien los datos correctamente.
 
-Este método solo esta implementado para la tabla usuarios,
+Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` enviando el método POST.
+
+![post](images/post-01.png "post")
+![post](images/post-02.png "post")
+
+### GET
+
+Con este método se obtienen los registros de las tablas de la base de datos, se toman todos los registros en formato JSON y se muestran con validaciones en el frontend.
+
+Este método esta implementado para la tabla usuarios y campañas, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` y `/server-sonetasot/campanas.php` enviando el método GET.
+
+![get](images/get-01.png "get")
+
+### PUT
+
+Con este método se actualiza un registro a la base de datos, es necesario enviar el ID del registro que se quiere actualizar, se toma el registro que se obtenga en formato JSON y se añaden todos los campos para actualizar el registro, desde el forntend se encuentran las validaciones necesarias para que se envien los datos correctamente.
+
+Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando la cadena `?id=` y añadiendo el ID del registro, y enviando el método PUT.
+
+![put](images/put-01.png "put")
+![put](images/put-02.png "put")
+
+### DELETE
+
+Con este método se elimina el registro en la base de datos, es necesario enviar el ID del registro que se quiere eliminar, se toma el registro que se obtenga en formato JSON y se elimina de la tabla.
+
+Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando la cadena `?id=` y añadiendo el ID del registro, y enviando el método DELETE.
+
+![delete](images/delete-01.png "delete")
