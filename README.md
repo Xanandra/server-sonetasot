@@ -3,9 +3,11 @@
 ## Server
 Este proyecto está generado con [Laravel Framework]("https://laravel.com) 9.52.5, Composer version 2.5.5 y XAMPP Control Panel versión 3.3.0.
 
-Es necesario ejecutar el comando `composer install` en la carpeta del proyecto para instalar composer.
+Es necesario ejecutar el comando `composer install` en la carpeta del proyecto para instalar las dependencias del proyecto.
 
 Se abre el Panel de Control de XAMPP y se inicia Apache y MySQL.
 
 ###Base de datos
-Se crea la base de datos ***vacunacion***, una vez creada se abre una terminal en la carpeta del proyecto y se ejecuta el comando `php artisan migrate`.
+Se crea la base de datos ***vacunacion***, una vez creada se abre una terminal en la carpeta del proyecto y se ejecuta el comando `php artisan migrate`, esto migrará las tablas a la base de datos.
+
+Una vez creada la base de datos es recomendable crear registros para la tabla de campañas para que se pueda utilizar las funcionalidades en el frontend, en este caso se tiene un archivo `campanas.sql` para poder importar dos registros de campañas.
