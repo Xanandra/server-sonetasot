@@ -38,7 +38,7 @@ Este método esta implementado para la tabla usuarios y campañas, la petición 
 
 Con este método se actualiza un registro a la base de datos, es necesario enviar el ID del registro que se quiere actualizar, se toma el registro que se obtenga en formato JSON y se añaden todos los campos para actualizar el registro, desde el forntend se encuentran las validaciones necesarias para que se envien los datos correctamente.
 
-Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando la cadena `?id=` y añadiendo el ID del registro, y enviando el método PUT.
+Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando el parametro `?id=` y añadiendo el ID del registro, y enviando el método PUT.
 
 ![put](images/put-01.png "put")
 ![put](images/put-02.png "put")
@@ -47,6 +47,6 @@ Este método solo esta implementado para la tabla usuarios, la petición es hech
 
 Con este método se elimina el registro en la base de datos, es necesario enviar el ID del registro que se quiere eliminar, se toma el registro que se obtenga en formato JSON y se elimina de la tabla.
 
-Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando la cadena `?id=` y añadiendo el ID del registro, y enviando el método DELETE.
+Este método solo esta implementado para la tabla usuarios, la petición es hecha con la query correspondiente desde `/server-sonetasot/usuarios.php` concatenando el parametro `?id=` y añadiendo el ID del registro, y enviando el método DELETE.
 
 ![delete](images/delete-01.png "delete")
